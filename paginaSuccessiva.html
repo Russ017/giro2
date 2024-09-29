@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruota dei Colori</title>
+    <title>Pulsante</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,44 +15,7 @@
             height: 100vh;
             text-align: center;
         }
-        .ruota {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            position: relative;
-            overflow: hidden;
-            border: 10px solid #333;
-            transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
-        }
-        .spicchio {
-            position: absolute;
-            width: 50%;
-            height: 50%;
-            background-color: transparent;
-            clip-path: polygon(100% 100%, 0% 100%, 0% 0%);
-            transform-origin: 100% 100%;
-            border: 1px solid #fff; /* Aggiungi un bordo bianco se vuoi separare visivamente gli spicchi */
-        }
-        .spicchio:nth-child(1) { transform: rotate(0deg); background-color: #FF5733; }
-        .spicchio:nth-child(2) { transform: rotate(72deg); background-color: #FFBD33; }
-        .spicchio:nth-child(3) { transform: rotate(144deg); background-color: #75FF33; }
-        .spicchio:nth-child(4) { transform: rotate(216deg); background-color: #33FF57; }
-        .spicchio:nth-child(5) { transform: rotate(288deg); background-color: #33A1FF; }
-
-        .puntatore {
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 20px solid red;
-            position: absolute;
-            top: -20px; /* Posizionamento sopra la ruota */
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
         button {
-            margin-top: 20px;
             padding: 10px 20px;
             font-size: 16px;
             background-color: #00796b;
@@ -67,30 +30,13 @@
     </style>
 </head>
 <body>
-    <h1>Gira la Ruota dei Colori!</h1>
-    <div class="ruota" id="ruota">
-        <div class="puntatore"></div>
-        <div class="spicchio"></div>
-        <div class="spicchio"></div>
-        <div class="spicchio"></div>
-        <div class="spicchio"></div>
-        <div class="spicchio"></div>
-    </div>
-    <button onclick="giraRuota()">Gira!</button>
-    <p id="risultato" style="margin-top: 20px; font-size: 20px;"></p>
+    <h1>Premi il pulsante!</h1>
+    <button onclick="premuto()">Premi qui</button>
+    <p id="messaggio" style="margin-top: 20px; font-size: 20px;"></p>
 
     <script>
-        function giraRuota() {
-            const ruota = document.getElementById('ruota');
-            const randomDegree = Math.floor(Math.random() * 360 + 720); // 720 per farla girare almeno 2 volte
-            ruota.style.transform = `rotate(${randomDegree}deg)`;
-
-            setTimeout(() => {
-                const coloreIndex = Math.floor((randomDegree % 360) / 72); // 5 spicchi
-                const coloriNomi = ["Rosso", "Giallo", "Verde Chiaro", "Verde", "Blu"];
-                
-                document.getElementById('risultato').innerText = `Il tuo colore è ${coloriNomi[coloreIndex]}`;
-            }, 4000); // Attendere il tempo di rotazione
+        function premuto() {
+            document.getElementById('messaggio').innerText = "Premuto";
         }
     </script>
 </body>
