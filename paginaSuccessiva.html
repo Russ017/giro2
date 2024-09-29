@@ -19,9 +19,9 @@
             width: 300px;
             height: 300px;
             border-radius: 50%;
-            border: 10px solid #333;
             position: relative;
             overflow: hidden;
+            border: 10px solid #333;
             transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
         }
         .spicchio {
@@ -29,7 +29,7 @@
             width: 50%;
             height: 50%;
             background-color: transparent;
-            border: 2px solid #fff;
+            clip-path: polygon(100% 100%, 0% 100%, 0% 0%);
             transform-origin: 100% 100%;
         }
         .spicchio:nth-child(1) { transform: rotate(0deg); background-color: #FF5733; }
@@ -76,21 +76,4 @@
         <div class="spicchio"></div>
     </div>
     <button onclick="giraRuota()">Gira!</button>
-    <p id="risultato" style="margin-top: 20px; font-size: 20px;"></p>
-
-    <script>
-        function giraRuota() {
-            const ruota = document.getElementById('ruota');
-            const randomDegree = Math.floor(Math.random() * 360 + 720); // 720 per farla girare almeno 2 volte
-            ruota.style.transform = `rotate(${randomDegree}deg)`;
-
-            setTimeout(() => {
-                const coloreIndex = Math.floor((randomDegree % 360) / 72); // 5 spicchi
-                const coloriNomi = ["Rosso", "Giallo", "Verde Chiaro", "Verde", "Blu"];
-                
-                document.getElementById('risultato').innerText = `Il tuo colore è ${coloriNomi[coloreIndex]}`;
-            }, 4000); // Attendere il tempo di rotazione
-        }
-    </script>
-</body>
-</html>
+    <p id="risultato" style="margin-top: 20
