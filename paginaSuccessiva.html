@@ -43,6 +43,18 @@
         .spicchio:nth-child(9) { transform: rotate(288deg); background-color: #6B33FF; }
         .spicchio:nth-child(10) { transform: rotate(324deg); background-color: #A133FF; }
 
+        .puntatore {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 20px solid red;
+            position: absolute;
+            top: -20px; /* Posizionamento sopra la ruota */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         button {
             margin-top: 20px;
             padding: 10px 20px;
@@ -61,6 +73,7 @@
 <body>
     <h1>Gira la Ruota dei Colori!</h1>
     <div class="ruota" id="ruota">
+        <div class="puntatore"></div>
         <div class="spicchio"></div>
         <div class="spicchio"></div>
         <div class="spicchio"></div>
@@ -83,10 +96,9 @@
 
             setTimeout(() => {
                 const coloreIndex = Math.floor((randomDegree % 360) / 36); // 10 spicchi
-                const colori = ["#FF5733", "#FFBD33", "#75FF33", "#33FF57", "#33FFBD", "#33A1FF", "#337BFF", "#335BFF", "#6B33FF", "#A133FF"];
                 const coloriNomi = ["Rosso", "Giallo", "Verde Chiaro", "Verde", "Ciano", "Blu Chiaro", "Blu", "Blu Scuro", "Viola", "Viola Scuro"];
                 
-                document.getElementById('risultato').innerText = `Il tuo colore è ${coloriNomi[coloreIndex]} (${colori[coloreIndex]})`;
+                document.getElementById('risultato').innerText = `Il tuo colore è ${coloriNomi[coloreIndex]}`;
             }, 4000); // Attendere il tempo di rotazione
         }
     </script>
