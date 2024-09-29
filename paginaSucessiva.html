@@ -3,55 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruota dei Colori</title>
+    <title>Accesso</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #e0f7fa;
+            color: #333;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
             text-align: center;
         }
-        .ruota {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            border: 10px solid #333;
-            position: relative;
-            overflow: hidden;
-            transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
+        h1 {
+            margin-bottom: 20px;
+            color: #00796b;
         }
-        .spicchio {
-            position: absolute;
-            width: 50%;
-            height: 50%;
-            background-color: transparent;
-            border: 2px solid #fff;
-            transform-origin: 100% 100%;
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #00796b;
+            border-radius: 5px;
+            width: 250px;
+            margin-bottom: 20px;
+            outline: none;
+            transition: border-color 0.3s;
         }
-        .spicchio:nth-child(1) { transform: rotate(0deg); background-color: #FF5733; }
-        .spicchio:nth-child(2) { transform: rotate(72deg); background-color: #FFBD33; }
-        .spicchio:nth-child(3) { transform: rotate(144deg); background-color: #75FF33; }
-        .spicchio:nth-child(4) { transform: rotate(216deg); background-color: #33FF57; }
-        .spicchio:nth-child(5) { transform: rotate(288deg); background-color: #33A1FF; }
-
-        .puntatore {
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 20px solid red;
-            position: absolute;
-            top: -20px; /* Posizionamento sopra la ruota */
-            left: 50%;
-            transform: translateX(-50%);
+        input:focus {
+            border-color: #004d40;
         }
-
         button {
-            margin-top: 20px;
             padding: 10px 20px;
             font-size: 16px;
             background-color: #00796b;
@@ -59,38 +42,27 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
         button:hover {
             background-color: #004d40;
         }
     </style>
-</head>
-<body>
-    <h1>Gira la Ruota dei Colori!</h1>
-    <div class="ruota" id="ruota">
-        <div class="puntatore"></div>
-        <div class="spicchio"></div>
-        <div class="spicchio"></div>
-        <div class="spicchio"></div>
-        <div class="spicchio"></div>
-        <div class="spicchio"></div>
-    </div>
-    <button onclick="giraRuota()">Gira!</button>
-    <p id="risultato" style="margin-top: 20px; font-size: 20px;"></p>
-
     <script>
-        function giraRuota() {
-            const ruota = document.getElementById('ruota');
-            const randomDegree = Math.floor(Math.random() * 360 + 720); // 720 per farla girare almeno 2 volte
-            ruota.style.transform = `rotate(${randomDegree}deg)`;
-
-            setTimeout(() => {
-                const coloreIndex = Math.floor((randomDegree % 360) / 72); // 5 spicchi
-                const coloriNomi = ["Rosso", "Giallo", "Verde Chiaro", "Verde", "Blu"];
-                
-                document.getElementById('risultato').innerText = `Il tuo colore è ${coloriNomi[coloreIndex]}`;
-            }, 4000); // Attendere il tempo di rotazione
+        function verificaCodice() {
+            const codice = document.getElementById("codice").value;
+            const codiceCorretto = "ABCD123456"; // Cambia con il tuo codice
+            if (codice === codiceCorretto) {
+                window.location.href = "paginaSuccessiva.html";
+            } else {
+                alert("Codice errato. Riprova.");
+            }
         }
     </script>
+</head>
+<body>
+    <h1>Inserisci il tuo codice di accesso</h1>
+    <input type="text" id="codice" maxlength="10" placeholder="Codice alfanumerico">
+    <button onclick="verificaCodice()">Accedi</button>
 </body>
 </html>
