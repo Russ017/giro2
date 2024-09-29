@@ -51,15 +51,11 @@
     <script>
         function verificaCodice() {
             const codice = document.getElementById("codice").value;
-            if (codice.length === 10) {
-                const codiceCorretto = "ABCD123456"; // Cambia con il tuo codice
-                if (codice === codiceCorretto) {
-                    window.location.href = "paginaSuccessiva.html";
-                } else {
-                    alert("Codice errato. Riprova.");
-                }
+            const codiceCorretto = "ABCD123456"; // Cambia con il tuo codice
+            if (codice === codiceCorretto) {
+                window.location.href = "paginaSuccessiva.html";
             } else {
-                alert("Inserisci un codice di esattamente 10 cifre.");
+                alert("Codice errato. Riprova.");
             }
         }
     </script>
