@@ -3,10 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Il Mio Primo Sito</title>
+    <title>Accesso</title>
+    <script>
+        function verificaCodice() {
+            const codice = document.getElementById("codice").value;
+            if (codice.length === 10) {
+                // Qui puoi inserire il codice corretto
+                const codiceCorretto = "ABCD123456"; // Cambia con il tuo codice
+                if (codice === codiceCorretto) {
+                    window.location.href = "paginaSuccessiva.html";
+                } else {
+                    alert("Codice errato. Riprova.");
+                }
+            } else {
+                alert("Inserisci un codice di esattamente 10 cifre.");
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>Benvenuti nel mio sito!</h1>
-    <p>Questo è il mio primo sito web hostato su GitHub Pages.</p>
+    <h1>Inserisci il tuo codice di accesso</h1>
+    <input type="text" id="codice" maxlength="10" placeholder="Codice alfanumerico">
+    <button onclick="verificaCodice()">Accedi</button>
 </body>
 </html>
