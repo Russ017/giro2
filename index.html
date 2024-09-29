@@ -47,12 +47,12 @@
             const codiceInserito = document.getElementById('codice').value;
 
             if (codiceInserito === codiceCorretto) {
-                // Controlla se è già stato utilizzato
-                if (!localStorage.getItem('accessoUtilizzato')) {
-                    localStorage.setItem('accessoUtilizzato', 'true');
+                // Controlla se il codice è già stato utilizzato
+                if (localStorage.getItem('codiceUtilizzato') !== 'true') {
+                    localStorage.setItem('codiceUtilizzato', 'true');
                     window.location.href = 'paginaSuccessiva.html';
                 } else {
-                    document.getElementById('messaggio').innerText = "Hai già utilizzato questo codice!";
+                    document.getElementById('messaggio').innerText = "Questo codice è già stato utilizzato!";
                 }
             } else {
                 document.getElementById('messaggio').innerText = "Codice errato!";
